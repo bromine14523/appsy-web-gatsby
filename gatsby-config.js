@@ -81,6 +81,16 @@ module.exports = {
         develop: false,
         tailwind: true,
       },
-    }
+    },
+    {
+      resolve: 'gatsby-source-strapi',
+      options: {
+        apiURL: 'https://appsy-web-strapi.herokuapp.com',
+        contentTypes: [
+          'restaurant'
+        ],
+        queryLimit: 1000,
+      },
+    },
   ],
 }
