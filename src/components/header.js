@@ -1,71 +1,92 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React, { useState } from "react"
+import Logo from "../images/logo_black.svg"
+import { Transition } from '@headlessui/react'
 
-function Header({ siteTitle }) {
-  const [isExpanded, toggleExpansion] = useState(false)
+let isOpen = false;
+
+function Header() {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="flex flex-wrap items-center justify-between p-6 mb-6 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
-      <div className="flex items-center flex-shrink-0 mr-6 text-white">
-        <span className="text-xl font-semibold tracking-tight">
-          {siteTitle}
-        </span>
-      </div>
-      <div className="block lg:hidden">
-        <button
-          onClick={() => toggleExpansion(!isExpanded)}
-          className="flex items-center px-3 py-2 text-white border border-white rounded hover:text-white hover:border-white"
+    <div className="relative bg-white">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="relative z-10 bg-white w-full">
+        <div className="relative pt-6 px-4 sm:px-6 lg:px-8">
+          <nav className="relative flex items-center justify-between sm:h-10" aria-label="Global">
+            <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
+              <div className="flex items-center justify-between w-full md:w-auto">
+                <a href="#">
+                  <span className="sr-only">Workflow</span>
+                  <img className="h-4 w-auto sm:h-6" src={Logo} />
+                </a>
+                <div className="-mr-2 flex items-center md:hidden">
+                  <button type="button" onClick={() => setIsOpen(!isOpen)} className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
+                    <span className="sr-only">Open main menu</span>
+
+                    <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
+              <a href="#" className="font-medium text-gray-500 hover:text-gray-900">What we do?</a>
+
+              <a href="#" className="font-medium text-gray-500 hover:text-gray-900">Projects</a>
+
+              <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">Contact</a>
+            </div>
+          </nav>
+        </div>
+
+
+        <Transition
+          show={isOpen}
+          enter="duration-150 ease-out"
+          enterFrom="opacity-0 scale-95"
+          enterTo="opacity-100 scale-100"
+          leave="duration-100 ease-in"
+          leaveFrom="opacity-100 scale-100"
+          leaveTo="opacity-0 scale-95"
         >
-          <svg
-            className="w-3 h-3 fill-current"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <title>Menu</title>
-            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-          </svg>
-        </button>
+          <div className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+
+            <div className="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
+
+              <div className="px-5 pt-4 flex items-center justify-between">
+
+                <div>
+                  <img className="h-4 w-auto" src={Logo} />
+                </div>
+                <div className="-mr-2">
+                  <button type="button" onClick={() => setIsOpen(!isOpen)} className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                    <span className="sr-only">Close main menu</span>
+
+                    <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div className="px-2 pt-2 pb-3 space-y-1">
+                <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">What we do?</a>
+
+                <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Projects</a>
+              </div>
+
+              <a href="#" className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100">
+                Contact
+              </a>
+            </div>
+          </div>
+        </Transition>
       </div>
-      <div
-        className={`${
-          isExpanded ? `block` : `hidden`
-        } w-full block flex-grow lg:flex lg:items-center lg:w-auto`}
-      >
-        <div className="text-sm lg:flex-grow">
-          <Link
-            to={`/`}
-            href="#responsive-header"
-            className="block mt-4 mr-4 text-white lg:inline-block lg:mt-0 hover:text-white"
-          >
-            Home
-          </Link>
-          <Link
-            to={`/page-2`}
-            className="block mt-4 mr-4 text-white lg:inline-block lg:mt-0 hover:text-white"
-          >
-            page 2
-          </Link>
-        </div>
-        <div>
-          <a
-            href="#download"
-            className="inline-block px-4 py-2 mt-4 text-sm leading-none text-white border border-white rounded hover:border-transparent hover:text-black hover:bg-white lg:mt-0"
-          >
-            Download
-          </a>
-        </div>
-      </div>
-    </nav>
+    </div>
+</div>
   )
 }
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
 
 export default Header

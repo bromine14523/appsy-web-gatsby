@@ -1,0 +1,10 @@
+<ul>
+{data.allStrapiRestaurant.edges.map(document => (
+  <li key={document.node.id}>
+    <h2>
+      {document.node.name}
+    </h2>
+    <p>{document.node.description}</p>
+  </li>
+))}
+</ul>

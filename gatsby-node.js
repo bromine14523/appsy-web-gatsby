@@ -4,4 +4,26 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-// You can delete this file if you're not using it
+ exports.createPages = async function ({ actions, graphql }) {
+    // const { data } = await graphql(`  
+    //     query {
+    //     allStrapiRestaurant(filter: {locale: {eq: "pl"}}) {
+    //         edges {
+    //         node {
+    //             id
+    //             name
+    //             description
+    //         }
+    //         }
+    //     }
+    //     }
+    // `)
+
+    ["en", "pl"].forEach(loc => {
+      actions.createPage({
+        path: loc,
+        component: require.resolve(`./src/templates/locale.js`),
+        context: { locale: loc },
+      })
+    })
+  }

@@ -5,6 +5,10 @@
   "version": "0.3.0",
   "author": "Kostas Vrouvas <hello@kosvrouvas.com>",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@headlessui/react": "^0.3.1",
     "autoprefixer": "^10.2.5",
     "gatsby": "^3.0.3",
     "gatsby-image": "^3.0.0",
@@ -23,7 +27,9 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-helmet": "^6.0.0"
+    "react-helmet": "^6.0.0",
+    "react-site-nav": "^0.2.9",
+    "react-text-loop": "^2.3.0"
   },
   "devDependencies": {
     "prettier": "^2.2.0",
