@@ -12,7 +12,6 @@ const DEFAULT_LANGUAGE = "en"
 
 function Main({data}) {
     const lang = data.allStrapiRestaurant.edges[0].node.locale;
-    console.log("fucking lang: " + lang);
     let lang2 = lang == DEFAULT_LANGUAGE || lang == null || lang == undefined ? "pl" : "en";
 
     return (

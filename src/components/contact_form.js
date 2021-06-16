@@ -1,16 +1,50 @@
-import { Input } from "postcss"
-import React from "react"
+import React, { useState }  from "react"
+
+// const THIS_PAGE = "/";
 
 function ContactForm() {
+    // document.querySelector("form").addEventListener("submit", handleSubmit);
+
+    // const handleSubmit = (e) => {
+    //   e.preventDefault()
+    //   let myForm = document.getElementById('contact-form');
+    //   let formData = new FormData(myForm)
+    //   fetch('http://localhost:1337/requests/contact', {
+    //     method: 'POST',
+    //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    //     body: new URLSearchParams(formData).toString()
+    //   }).then(() => console.log('Form successfully submitted')).catch((error) =>
+    //     alert(error))
+    // }
+
+
+    // document.querySelector("form").addEventListener("submit", handleSubmit);
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault()
+    //     let myForm = document.getElementById('pizzaOrder');
+    //     let formData = new FormData(myForm)
+    //     fetch('/', {
+    //         method: 'POST',
+    //         headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    //         body: new URLSearchParams(formData).toString()
+    //     }).then(() => console.log('Form successfully submitted')).catch((error) =>
+    //         alert(error))
+    // }
+    
   return (
     <form 
         className="w-full max-w-lg mx-auto my-4" 
         method="POST" 
         data-netlify="true"
-        name="contact"
+        data-netlify-honeypot="bot-field"
+        name="contact-form"
         id="contact-form"
-        // action="http://localhost:1337/requests/contact"
+        // onSubmit={e => handleSubmit(e)}
+        // action={THIS_PAGE}
     >
+        <input type="hidden" name="bot-field" />
+        <input type="hidden" name="form-name" value="contact-form" />
         <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full px-3">
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-name">
@@ -46,20 +80,6 @@ function ContactForm() {
         </div>
     </form>
   )
-}
-
-document.querySelector("form").addEventListener("submit", handleSubmit);
-
-const handleSubmit = (e) => {
-  e.preventDefault()
-  let myForm = document.getElementById('contact-form');
-  let formData = new FormData(myForm)
-  fetch('/', {
-    method: 'POST',
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams(formData).toString()
-  }).then(() => console.log('Form successfully submitted')).catch((error) =>
-    alert(error))
 }
 
 export default ContactForm
