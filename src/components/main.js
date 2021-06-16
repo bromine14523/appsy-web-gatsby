@@ -27,13 +27,13 @@ function Main({data}) {
             </li>
           ))}
         </ul> */}
-        <ContactForm />
-        <Header />
+        {/* <ContactForm /> */}
+        {/* <Header />
         <Hero />
         <Offer />
         <Projects />
-        <ContactUs />
-        <Footer />
+        <ContactUs /> */}
+        {/* <Footer /> */}
       
       </div>
     );
