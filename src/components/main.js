@@ -11,8 +11,8 @@ import ContactForm from "../components/contact_form"
 const DEFAULT_LANGUAGE = "en"
 
 function Main({data}) {
-    // const lang = data.allStrapiRestaurant.edges[0].node.locale;
-    // let lang2 = lang == DEFAULT_LANGUAGE || lang == null || lang == undefined ? "pl" : "en";
+    const lang = data.allStrapiRestaurant.edges[0].node.locale;
+    let lang2 = lang == DEFAULT_LANGUAGE || lang == null || lang == undefined ? "pl" : "en";
 
     return (
       <div>
