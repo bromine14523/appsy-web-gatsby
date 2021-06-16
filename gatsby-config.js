@@ -88,10 +88,7 @@ module.exports = {
         apiURL: 'https://appsy-web-strapi.herokuapp.com',
         contentTypes: [
           'restaurant',
-          'article',
-          'language',
           'request',
-          'user'
         ],
         queryLimit: 1000,
       },
