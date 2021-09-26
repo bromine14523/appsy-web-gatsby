@@ -26,7 +26,12 @@ const getProps = () => ({
 const createCarouselItemImage = (item, index, options = {}) => (
     <div key={"project" + index} className="lg:px-12">
         <div className="slider-testimonial mx-auto flex flex-col w-96">
-            <img alt={"customer" + index} src={item.avatarUrl} className="h-28 w-28 rounded-full shadow-md mx-auto" />
+            <Image
+                className="h-28 w-28 rounded-full shadow-md mx-auto"
+                objectFit="cover"
+                src={item.avatarUrl}
+                key={"customer" + index}
+            />
         </div>
         <div className="mx-auto flex flex-col lg:px-12 mt-4">
             <p className="text-justify text-gray-500 px-12 italic">
