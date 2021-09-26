@@ -1,5 +1,5 @@
 import React from 'react';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "./testimonials_carousel.css";
 import { Carousel } from 'react-responsive-carousel';
 
 const getProps = () => ({
