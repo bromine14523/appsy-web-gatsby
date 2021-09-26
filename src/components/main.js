@@ -1,42 +1,18 @@
 import React from "react"
-import { Link, useStaticQuery } from "gatsby"
-import Header from "../components/header"
 import Hero from "../components/hero"
 import Offer from "../components/offer"
 import Projects from "../components/projects"
-import Footer from "../components/footer"
 import ContactUs from "../components/contact_us"
-import ContactForm from "../components/contact_form"
+import Testimonials from "../components/testimonials"
 
-// const DEFAULT_LANGUAGE = "en"
-
-function Main({data}) {
-    // const lang = data.allStrapiRestaurant.edges[0].node.locale;
-    // let lang2 = lang == DEFAULT_LANGUAGE || lang == null || lang == undefined ? "pl" : "en";
-
+export default function Main({data}) {
     return (
-      <div>
-        {/* <Link to={"/" + lang2}>{lang2}</Link>
-        <ul>
-          {data.allStrapiRestaurant.edges.map(document => (
-            <li key={document.node.id}>
-              <h2>
-                {document.node.name}
-              </h2>
-              <p>{document.node.description}</p>
-            </li>
-          ))}
-        </ul> */}
-        <ContactForm />
-        <Header />
-        <Hero />
-        <Offer />
-        <Projects />
-        <ContactUs />
-        <Footer />
-      
-      </div>
+      <>
+        <Hero heroData={data.strapiListing.hero} />
+        <Offer offerData={data.strapiListing.offer} />
+        <Projects projectsData={data.strapiListing.projects} />
+        <Testimonials testimonialsData={data.strapiListing.testimonials} />
+        <ContactUs contactRowData={data.strapiListing.contactRow} />
+      </>
     );
 }
-
-export default Main

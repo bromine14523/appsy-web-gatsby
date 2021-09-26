@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby TailwindCSS Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter with TailwindCSS and common dev tools. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@kosvrouvas`,
+    title: `Appsy company site`,
+    description: `Appsy is company from technology industry. They are leading in providing modern and well-suited to client needs solutions.`,
+    author: `rombalski.pl`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -24,7 +24,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
     {
@@ -86,11 +86,24 @@ module.exports = {
       resolve: 'gatsby-source-strapi',
       options: {
         apiURL: 'https://appsy-web-strapi.herokuapp.com',
-        contentTypes: [
-          'restaurant'
+        collectionTypes: [
+          {
+            name: `language`
+          },
+          {
+            name: `listing`,
+            api: { qs: { _locale: `all` } }
+          }
         ],
         queryLimit: 1000,
       },
     },
+    {
+      resolve: "gatsby-plugin-anchor-links",
+      options: {
+        offset: -100,
+        duration: 2000
+      }
+    }
   ],
 }

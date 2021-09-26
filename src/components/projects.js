@@ -1,9 +1,5 @@
 import React, { Component } from "react"
 
-const DefaultSite = "https://www.italianbark.com/wp-content/uploads/2018/01/hotel-room-design-trends-italianbark-interior-design-blog.jpg"
-const DefaultName = "Simple project"
-const DefaultTags = ["Design", "Development", "Maintenance", "Hosting"]
-
 class ProjectTag extends Component {
     render() {
       return (
@@ -15,15 +11,15 @@ class ProjectTag extends Component {
 class Project extends Component {
     render() {
       return (
-        <a href="#">
-            <div className="group transition-all duration-500 flex flex-col bg-gray-50 rounded-md shadow-xl hover:shadow-2xl">
-                <img src={this.props.site} className="h-48 w-full rounded-t-md object-cover" />
+        <a href={this.props.data.href} target="_blank" rel="noreferrer">
+            <div className="group transition-all duration-500 flex flex-col bg-gray-50 rounded-md shadow-xl hover:shadow-2xl mt-8 lg:mt-0">
+                <img src={this.props.data.imgUrl} className="h-48 w-full rounded-t-md object-cover" alt="Project snapshot" />
                 <div className="flex flex-col p-4">
-                    <h2 className="text-indigo-600 text-sm">{this.props.name}</h2>
-                    <h2 className="font-semibold text-black">Gardener business card</h2>
+                    <h2 className="text-indigo-600 text-sm">{this.props.data.projectCategory}</h2>
+                    <h2 className="font-semibold text-black">{this.props.data.projectTitle}</h2>
                 </div>
                 <div className="flex flex-wrap px-4">
-                    {this.props.tags.map(item => <ProjectTag name={item} />)}
+                    {this.props.data.tags.map((item, index) => <ProjectTag key={"tag" + index} name={item} />)}
                 </div>
 
                 <div className="flex flex-wrap p-4 justify-end">
@@ -39,32 +35,28 @@ class Project extends Component {
     }
   }
 
-function Projects() {
+export default function Projects({projectsData}) {
   return (
-    <div className="py-12 bg-white">
+    <div className="py-12 bg-white" id="projects">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="lg:text-center">
-            <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">Completed projects</h2>
+          <div className="text-center">
+            <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">{projectsData.sectionName}</h2>
             <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                See what we are good at
+              {projectsData.sectionTitle}
             </p>
             <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-              Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in accusamus quisquam.
+              {projectsData.sectionDescription}
             </p>
           </div>
 
           <div className="mt-10">
             <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-10">
-                <Project site={DefaultSite} name={DefaultName} tags={DefaultTags} />
-                <Project site={DefaultSite} name={DefaultName} tags={DefaultTags} />
-                <Project site={DefaultSite} name={DefaultName} tags={DefaultTags} />
-                <Project site={DefaultSite} name={DefaultName} tags={DefaultTags} />
+              {
+                projectsData.projects.map((project, index) => <Project key={index} data={project} />)
+              }
             </dl>
           </div>
         </div>
       </div>
   )
 }
-
-
-export default Projects

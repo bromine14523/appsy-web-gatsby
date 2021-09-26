@@ -5,25 +5,43 @@
  */
 
  exports.createPages = async function ({ actions, graphql }) {
-    // const { data } = await graphql(`  
-    //     query {
-    //     allStrapiRestaurant(filter: {locale: {eq: "pl"}}) {
-    //         edges {
-    //         node {
-    //             id
-    //             name
-    //             description
-    //         }
-    //         }
-    //     }
-    //     }
-    // `)
+    const languagesQuery = await graphql(`  
+        query {
+          allStrapiLanguage(filter: {isActive: {eq: true}}) {
+            edges {
+              node {
+                name
+              }
+            }
+          }
+        }
+    `);
 
-    ["en", "pl"].forEach(loc => {
+    actions.createPage({
+      path: '/',
+      component: require.resolve(`./src/templates/locale.js`),
+      context: { locale: "en" },
+    });
+
+    actions.createPage({
+      path: '/contact',
+      component: require.resolve(`./src/templates/contact-locale.js`),
+      context: { locale: "en" },
+    });
+
+    languagesQuery.data.allStrapiLanguage.edges.forEach(loc => {
+
       actions.createPage({
-        path: loc,
+        path: loc.node.name,
         component: require.resolve(`./src/templates/locale.js`),
-        context: { locale: loc },
-      })
-    })
-  }
+        context: { locale: loc.node.name },
+      });
+
+      actions.createPage({
+        path: loc.node.name + '/contact',
+        component: require.resolve(`./src/templates/contact-locale.js`),
+        context: { locale: loc.node.name },
+      });
+
+    });
+}
