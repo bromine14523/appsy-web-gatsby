@@ -1,5 +1,7 @@
 import React from 'react';
-import "./testimonials_carousel.css";
+// import "./testimonials_carousel.css";
+import "./../css/testimonials_carousel.css";
+import "./../css/carousel-fix.css"
 import { Carousel } from 'react-responsive-carousel';
 
 const getProps = () => ({
@@ -7,7 +9,7 @@ const getProps = () => ({
     showStatus: true, //
     showIndicators: true, //
     infiniteLoop: true,
-    showThumbs: true, //
+    showThumbs: false,
     useKeyboardArrows: true,
     autoPlay: true,
     stopOnHover: true,
