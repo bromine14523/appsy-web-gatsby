@@ -81,6 +81,10 @@ module.exports = {
         printRejected: false,
         develop: false,
         tailwind: true,
+        ignore: [
+          'carousel-fix.css',
+          'testimonials_carousel.css'
+        ]
       },
     },
     {

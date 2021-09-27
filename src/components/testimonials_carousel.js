@@ -1,14 +1,12 @@
 import React from 'react';
-// import "./testimonials_carousel.css";
 import "./../css/testimonials_carousel.css";
 import "./../css/carousel-fix.css"
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
 const getProps = () => ({
     showArrows: false,
-    showStatus: true, //
-    showIndicators: true, //
+    showStatus: false,
+    showIndicators: false,
     infiniteLoop: true,
     showThumbs: false,
     useKeyboardArrows: true,
